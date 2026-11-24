@@ -22,7 +22,7 @@ export default function Navbar() {
           onClick={() => setOpen(false)}
           className="text-2xl font-extrabold tracking-tight text-brand-600"
         >
-          Deal<span className="text-slate-900">Nest</span>
+          Paw<span className="text-slate-900">Coupons</span>
         </Link>
 
         {/* Desktop nav */}
