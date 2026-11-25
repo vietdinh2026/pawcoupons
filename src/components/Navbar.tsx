@@ -7,6 +7,7 @@ import Link from "next/link";
 const NAV_LINKS = [
   { href: "/", label: "Coupons", subtle: false },
   { href: "/stores", label: "Stores", subtle: false },
+  { href: "/categories", label: "Categories", subtle: false },
   { href: "/guides", label: "Guides", subtle: false },
   { href: "/submit", label: "Submit a Coupon", subtle: false },
   { href: "/admin", label: "Owner", subtle: true },

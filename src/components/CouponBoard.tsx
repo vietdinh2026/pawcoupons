@@ -11,13 +11,17 @@ export default function CouponBoard({
   coupons,
   votes,
   initialStore,
+  initialPetCategory,
+  lockPetCategory,
 }: {
   coupons: Coupon[];
   votes: VoteCounts;
   initialStore?: string;
+  initialPetCategory?: string;
+  lockPetCategory?: boolean;
 }) {
   const [query, setQuery] = useState("");
-  const [petCategory, setPetCategory] = useState("all");
+  const [petCategory, setPetCategory] = useState(initialPetCategory ?? "all");
   const [store, setStore] = useState(initialStore ?? "All");
   const [sort, setSort] = useState<SortKey>("newest");
 
@@ -86,22 +90,25 @@ export default function CouponBoard({
         </select>
       </div>
 
-      {/* Pet category filter strip — filters the already-loaded list, no server call */}
-      <div className="mt-4 flex flex-wrap gap-2">
-        {PET_CATEGORIES.map((c) => (
-          <button
-            key={c.value}
-            onClick={() => setPetCategory(c.value)}
-            className={`rounded-full px-4 py-1.5 text-sm font-medium ${
-              petCategory === c.value
-                ? "bg-brand-600 text-white"
-                : "border bg-white hover:bg-slate-50"
-            }`}
-          >
-            {c.label}
-          </button>
-        ))}
-      </div>
+      {/* Pet category filter strip — filters the already-loaded list, no server call.
+          Hidden on a category page, which is already locked to one category. */}
+      {!lockPetCategory && (
+        <div className="mt-4 flex flex-wrap gap-2">
+          {PET_CATEGORIES.map((c) => (
+            <button
+              key={c.value}
+              onClick={() => setPetCategory(c.value)}
+              className={`rounded-full px-4 py-1.5 text-sm font-medium ${
+                petCategory === c.value
+                  ? "bg-brand-600 text-white"
+                  : "border bg-white hover:bg-slate-50"
+              }`}
+            >
+              {c.label}
+            </button>
+          ))}
+        </div>
+      )}
 
       <p className="mt-5 text-sm text-slate-500">
         {filtered.length} coupon{filtered.length === 1 ? "" : "s"}
