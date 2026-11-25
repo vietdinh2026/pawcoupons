@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CouponBoard from "@/components/CouponBoard";
@@ -119,18 +120,28 @@ export default async function CategoryDetailPage({
       </Link>
 
       {/* Category header */}
-      <section className="mt-3 rounded-3xl border bg-white p-6 sm:p-8">
-        <h1 className="text-3xl font-extrabold sm:text-4xl">
-          {cat.label} Coupons
-        </h1>
-        <p className="mt-2 max-w-2xl text-slate-600">{cat.description}</p>
-        <p className="mt-3 rounded-2xl bg-brand-50 p-4 text-sm leading-relaxed text-slate-700">
-          <strong className="font-semibold text-slate-900">How to save here: </strong>
-          {cat.tip}
-        </p>
-        <p className="mt-3 text-sm text-slate-400">
-          {coupons.length} active coupon{coupons.length === 1 ? "" : "s"}
-        </p>
+      <section className="mt-3 overflow-hidden rounded-3xl border bg-white">
+        <Image
+          src={cat.image}
+          alt={cat.label}
+          width={1200}
+          height={500}
+          className="h-56 w-full object-cover sm:h-64"
+          priority
+        />
+        <div className="p-6 sm:p-8">
+          <h1 className="text-3xl font-extrabold sm:text-4xl">
+            {cat.label} Coupons
+          </h1>
+          <p className="mt-2 max-w-2xl text-slate-600">{cat.description}</p>
+          <p className="mt-3 rounded-2xl bg-brand-50 p-4 text-sm leading-relaxed text-slate-700">
+            <strong className="font-semibold text-slate-900">How to save here: </strong>
+            {cat.tip}
+          </p>
+          <p className="mt-3 text-sm text-slate-400">
+            {coupons.length} active coupon{coupons.length === 1 ? "" : "s"}
+          </p>
+        </div>
       </section>
 
       <div className="mt-8">
@@ -167,12 +178,21 @@ export default async function CategoryDetailPage({
               <Link
                 key={c.value}
                 href={`/categories/${c.value}`}
-                className="rounded-2xl border bg-white p-4 hover:border-brand-300"
+                className="overflow-hidden rounded-2xl border bg-white hover:border-brand-300"
               >
-                <span className="font-bold text-slate-900">{c.label}</span>
-                <span className="mt-1 block text-sm text-slate-500">
-                  {c.description}
-                </span>
+                <Image
+                  src={c.image}
+                  alt={c.label}
+                  width={600}
+                  height={400}
+                  className="h-24 w-full object-cover"
+                />
+                <div className="p-4">
+                  <span className="font-bold text-slate-900">{c.label}</span>
+                  <span className="mt-1 block text-sm text-slate-500">
+                    {c.description}
+                  </span>
+                </div>
               </Link>
             )
           )}
