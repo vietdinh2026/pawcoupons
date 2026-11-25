@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 const NAV_LINKS = [
@@ -20,9 +21,19 @@ export default function Navbar() {
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="text-2xl font-extrabold tracking-tight text-brand-600"
+          className="flex items-center gap-2 text-2xl font-extrabold tracking-tight text-brand-600"
         >
-          Paw<span className="text-slate-900">Coupons</span>
+          <Image
+            src="/icon.png"
+            alt="PawCoupons"
+            width={32}
+            height={32}
+            className="h-8 w-8 shrink-0"
+            priority
+          />
+          <span>
+            Paw<span className="text-slate-900">Coupons</span>
+          </span>
         </Link>
 
         {/* Desktop nav */}
