@@ -113,6 +113,40 @@ export async function getCouponsForStore(
   };
 }
 
+/** Active coupons for one pet category, with the store embedded. */
+export async function getCouponsForPetCategory(
+  petCategory: string
+): Promise<{ coupons: Coupon[]; votes: VoteCounts }> {
+  if (!isSupabaseConfigured() || !petCategory) return { coupons: [], votes: {} };
+
+  const { data, error } = await supabase
+    .from("coupons")
+    .select("*, store:stores(*)")
+    .eq("pet_category", petCategory)
+    .eq("status", "active")
+    // Same self-healing expiry filter as getActiveCoupons.
+    .or(activeExpiryFilter())
+    .order("created_at", { ascending: false });
+
+  if (error || !data) return { coupons: [], votes: {} };
+
+  const coupons = data as Coupon[];
+  if (coupons.length === 0) return { coupons: [], votes: {} };
+
+  const { data: voteRows } = await supabase
+    .from("votes")
+    .select("coupon_id, vote")
+    .in(
+      "coupon_id",
+      coupons.map((c) => c.id)
+    );
+
+  return {
+    coupons,
+    votes: aggregateVotes(voteRows),
+  };
+}
+
 export function formatDiscount(c: Coupon): string {
   if (c.discount_type === "percent" && c.discount_value != null) {
     return `${c.discount_value}% OFF`;

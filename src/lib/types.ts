@@ -94,6 +94,58 @@ export const PET_CATEGORY_LABELS: Record<string, string> = Object.fromEntries(
   PET_CATEGORIES.map((c) => [c.value, c.label])
 );
 
+/** One entry per pet category page (/categories/[slug]). */
+export interface PetCategoryDetail {
+  value: string;
+  label: string;
+  description: string;
+  tip: string;
+}
+
+export const PET_CATEGORY_DETAILS: PetCategoryDetail[] = [
+  {
+    value: "food-treats",
+    label: "Food & Treats",
+    description:
+      "Dry and wet food, treats, supplements and milk powder — the repeat buys every pet needs, month after month.",
+    tip: "Autoship codes save the most here: the first Autoship order gets the deepest discount, and a recurring cart clears the free-shipping threshold on its own.",
+  },
+  {
+    value: "pharmacy",
+    label: "Pharmacy",
+    description:
+      "Flea, tick and heartworm medication, vitamins, dental care and ear and eye care for dogs and cats.",
+    tip: "Check exclusions first: most sitewide codes exclude prescription medication, so look for a pharmacy-specific code instead.",
+  },
+  {
+    value: "toys-gear",
+    label: "Toys & Gear",
+    description:
+      "Toys, beds, crates, carriers, leashes and clothes — the fun stuff, usually with a direct percentage-off code.",
+    tip: "No subscription needed here: a one-off code beats Autoship for toys and beds, which you buy once, not every month.",
+  },
+  {
+    value: "litter-cleaning",
+    label: "Litter & Cleaning",
+    description:
+      "Litter, trays, pads, deodorizers and cage cleaning — heavy and bulky, so delivery costs matter as much as the discount.",
+    tip: "Free shipping is the saving that counts: a small code on a heavy bag of litter is worth less than free delivery on the same order.",
+  },
+  {
+    value: "services-boxes",
+    label: "Services & Boxes",
+    description:
+      "Monthly subscription boxes, pet insurance, grooming and spa — mostly first-box, free-trial and new-member offers.",
+    tip: "These are almost always new-customer deals: the first box or first month is where the saving lives, so compare the first-box offer before you subscribe.",
+  },
+];
+
+export function getPetCategoryDetail(
+  slug: string
+): PetCategoryDetail | undefined {
+  return PET_CATEGORY_DETAILS.find((c) => c.value === slug);
+}
+
 /** Short status labels shown on coupon cards (coupons.tags). */
 export const COUPON_TAG_LABELS = [
   "Autoship Deal",
