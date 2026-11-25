@@ -106,67 +106,72 @@ export const GUIDES: Guide[] = [
   },
   {
     slug: "how-to-save-at-chewy",
-    title: "How to Save at Chewy: Autoship, Free Shipping & Promo Codes (2026)",
+    title: "How to Save at Chewy in 2026: One Autoship Cart for Food, Pharmacy and Litter",
     description:
-      "How to save the most at Chewy in 2026: first Autoship discounts, free shipping thresholds, Autoship savings on every order, and the current live codes.",
-    updatedAt: "2026-11-21",
+      "Save at Chewy by running one Autoship cart for a multi-pet household: time food, litter and pharmacy refills together, pick between the first-order gift card and the first-Autoship discount, and trial new food risk-free — with live Chewy codes on PawCoupons.",
+    updatedAt: "2026-11-25",
     storeSlug: "chewy",
     intro: [
-      "Chewy is one of the easiest stores to save at, because the savings are built into how you shop: the first Autoship order gets the deepest discount, repeat orders keep saving, and shipping is free once your cart is big enough.",
-      "The live code list at the bottom of this page always shows the best Chewy offer on PawCoupons right now — check it before you order, because promo codes can beat Chewy's standard Autoship discount.",
+      "If you share your home with a dog who eats like a teenager and a cat who only eats one flavour, Chewy stops being a shop and becomes a schedule. The saving isn't in one clever code — it's in getting the food, the litter and the flea treatment to arrive in the same box, on the week you actually run out.",
+      "This guide is built around that one-cart idea. Set up Autoship around each pet's real usage, choose the right first-order deal for the size of your cart, and use Chewy's long returns window to trial a new food without betting a full bag on it. The live Chewy codes on PawCoupons are the starting point — check them before you order, because the best deal changes with your cart.",
     ],
     sections: [
       {
-        heading: "Start with your first Autoship order",
+        heading: "Run one Autoship cart, timed to each pet",
         paragraphs: [
-          "The single biggest saving at Chewy is the first Autoship order. Chewy's own Autoship program gives 35% off your first Autoship order (up to $20) — and a promo code from PawCoupons can be even better, so always compare the live code list before you check out.",
-          "Autoship is Chewy's recurring delivery program: you pick the food, treats or supplies your pet needs and how often they arrive. You can change the schedule or skip a delivery any time.",
+          "Don't put everything on the same delivery date. A large dog can finish a bag of kibble in four weeks while a cat's litter lasts two, and flea and tick medicine runs on a strict monthly clock. Give each item its own Autoship frequency — food every four weeks, litter every two, medicine monthly — and let Chewy deliver them together when the dates line up.",
+          "That timing is where the money is. A cart that clears the free-shipping threshold in one delivery beats three small orders that each miss it, and a recurring cart means you stop paying full price for an emergency bag at the last minute because the food ran out on a Sunday.",
         ],
       },
       {
-        heading: "Keep saving on every Autoship order",
+        heading: "First order: gift card, Autoship discount or early code — pick one",
         paragraphs: [
-          "After the first order, Autoship saves 5% on every order. It adds up fast on food and litter you buy every month, and a recurring cart also makes it easy to clear the free-shipping threshold without thinking about it.",
+          "Chewy's first-order deals don't stack, so the choice depends on your cart. A first order over $49 can earn a $20 gift card, while a first Autoship order gets 35% off up to $20 — on a small first cart the gift card often wins, on a big first food order the Autoship percentage usually wins. Early seasonal codes, like the 30% Black Friday early deal, are a third option for a one-off order that you don't want on Autoship.",
+          "Do the quick maths before you check out: work out the final price after each deal, not the headline percentage. Then check the live Chewy page on PawCoupons, because which deal is running — and whether it excludes your brand — changes week to week.",
         ],
       },
       {
-        heading: "Free shipping thresholds",
+        heading: "Put the pharmacy refill in the same cart, but read its rules first",
         paragraphs: [
-          "Standard orders ship free once they reach $49, and first-time customers only need $35 for free delivery. Orders arrive in 1–3 days. If your cart is just short of the threshold, adding a small toy or treat is usually cheaper than paying for shipping.",
-        ],
-        bullets: [
-          "Free shipping on orders over $49",
-          "Free shipping on first orders over $35",
-          "1–3 day delivery on eligible items",
+          "Chewy Pharmacy runs its own first-order discount — 20% off a first prescription order — and it plays by different rules from a food code. A prescription needs your vet's approval, so allow extra days on the first order, and don't count on a sitewide code covering it: most sitewide codes exclude prescription medicine.",
+          "Once the prescription is approved, set the refill on Autoship to match the dose schedule and skip a delivery if you still have doses left. Never stockpile medicine past its expiry date just because a code is running.",
         ],
       },
       {
-        heading: "Returns are free for a year",
+        heading: "Trial a new food without betting a full bag on it",
         paragraphs: [
-          "Chewy offers free 365-day returns. If a food or product doesn't work for your pet, you can return it — that makes it low-risk to try a new brand with a promo code.",
+          "Chewy gives you 365 days to return an item for free, and that changes how you should try a new food. Buy the smallest bag first, mix it with the old food over a week or so, and watch whether your pet actually eats it — a 35% discount on a bag your dog refuses is still money wasted.",
+          "If the trial works, move the winning food onto Autoship at the frequency your pet actually eats it. If it doesn't, return it and try the next brand with the next live code, instead of forcing a pet through a bag they hate.",
+        ],
+      },
+      {
+        heading: "When to check Petco or PetSmart instead",
+        paragraphs: [
+          "Chewy usually wins on a recurring food-and-pharmacy cart, but it isn't always the cheapest for a single toy, bed or crate — especially when Petco or PetSmart run a pickup or in-store deal on that exact item. Before a one-off purchase, compare the final price on Chewy with the same item at Petco, including delivery.",
+          "For the pharmacy side of the same cart, compare Chewy Pharmacy with PetCareRx and 1-800-PetMeds the same way — our pet pharmacy guide walks through that comparison, and the live codes for all three are on their PawCoupons store pages.",
         ],
       },
     ],
     faqs: [
       {
-        question: "What is the best Chewy promo code today?",
+        question: "Should I put everything on Autoship, or just the food?",
         answer:
-          "Chewy's best offer is usually on the first Autoship order. The live list on our Chewy page always shows the best current code — check there before you order.",
+          "Put the things you buy on a fixed schedule on Autoship — food, litter and monthly medicine — and keep toys, beds and treats as one-off orders. Autoship saves the most on repeat essentials, and a toy bought on a schedule is just a toy arriving before you need it.",
       },
       {
-        question: "How does Chewy Autoship work?",
+        question: "Can I use the $20 gift card and the 35% first-Autoship discount together?",
         answer:
-          "You choose the products and delivery frequency, and Chewy ships them automatically. The first Autoship order gets the deepest discount, later orders save 5%, and you can change or skip deliveries any time.",
+          "No — Chewy's first-order deals don't stack, so you pick one per order. Compare the final price: the gift card usually wins on a first order just over $49, while the 35% Autoship discount (up to $20) usually wins on a larger first food order. Check the live Chewy page on PawCoupons to see which deals are running right now.",
       },
       {
-        question: "Does Chewy offer free shipping?",
+        question: "How do I time a pharmacy refill on Autoship?",
         answer:
-          "Yes — orders over $49 ship free, and first-time customers only need $35 for free delivery. Delivery takes 1–3 days on eligible items.",
+          "Set the delivery frequency to match the dose schedule — usually monthly for flea, tick and heartworm medicine — and order the first refill a few days early, because the pharmacy needs your vet to approve the prescription. Once it's approved, Autoship keeps the refills coming, and you can skip a delivery if you still have doses left.",
       },
       {
-        question: "Can I return items to Chewy for free?",
+        question: "What if my pet won't eat the new food I bought on sale?",
         answer:
-          "Yes. Chewy offers free returns for 365 days.",
+          "Return it — Chewy offers free returns for 365 days, so a failed trial costs you nothing but the week you spent testing it. Next time, buy the smallest bag first and mix it with the old food gradually, and only move the new food onto Autoship once your pet is eating it happily.",
       },
     ],
   },
