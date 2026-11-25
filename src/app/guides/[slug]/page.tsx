@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CouponBoard from "@/components/CouponBoard";
 import StoreFaq from "@/components/StoreFaq";
-import { getActiveCoupons, getCouponsForStore, getStoreBySlug } from "@/lib/data";
+import { getActiveCoupons, getCouponsForPetCategory, getCouponsForStore, getStoreBySlug } from "@/lib/data";
 import { faqJsonLd } from "@/lib/faq";
 import { getGuide, GUIDES, type Guide, type GuideSection } from "@/lib/guides";
 import { getPetCategoryDetail } from "@/lib/types";
@@ -44,6 +45,7 @@ export async function generateMetadata({
       type: "article",
       modifiedTime: guide.updatedAt,
       publishedTime: guide.updatedAt,
+      ...(guide.image ? { images: [guide.image] } : {}),
     },
   };
 }
@@ -87,6 +89,7 @@ export default async function GuidePage({
   let liveCoupons: Awaited<ReturnType<typeof getActiveCoupons>>["coupons"] = [];
   let liveVotes: Awaited<ReturnType<typeof getActiveCoupons>>["votes"] = {};
   let storeName: string | null = null;
+  let categoryName: string | null = null;
 
   if (guide.storeSlug) {
     const store = await getStoreBySlug(guide.storeSlug);
@@ -96,6 +99,12 @@ export default async function GuidePage({
       liveCoupons = res.coupons;
       liveVotes = res.votes;
     }
+  } else if (guide.petCategory) {
+    const detail = getPetCategoryDetail(guide.petCategory);
+    categoryName = detail?.label ?? null;
+    const res = await getCouponsForPetCategory(guide.petCategory);
+    liveCoupons = res.coupons;
+    liveVotes = res.votes;
   } else {
     const { coupons, votes } = await getActiveCoupons();
     liveVotes = votes;
@@ -157,6 +166,17 @@ export default async function GuidePage({
         Last updated: <time dateTime={guide.updatedAt}>November 2026</time> · PawCoupons
       </p>
 
+      {guide.image && (
+        <Image
+          src={guide.image}
+          alt={guide.title}
+          width={1200}
+          height={600}
+          className="mt-6 w-full rounded-3xl border object-cover"
+          priority
+        />
+      )}
+
       <div className="mt-6 max-w-3xl space-y-4 leading-relaxed text-slate-700">
         {guide.intro.map((p: string, idx: number) => (
           <p key={`intro-${idx}`}>{p}</p>
@@ -168,11 +188,18 @@ export default async function GuidePage({
         <h2 className="text-2xl font-extrabold">
           {storeName
             ? `Current ${storeName} codes`
-            : "Biggest live Black Friday offers"}
+            : categoryName
+              ? `Related ${categoryName} coupons`
+              : "Biggest live Black Friday offers"}
         </h2>
         {liveCoupons.length > 0 ? (
           <div className="mt-4">
-            <CouponBoard coupons={liveCoupons} votes={liveVotes} />
+            <CouponBoard
+              coupons={liveCoupons}
+              votes={liveVotes}
+              initialPetCategory={guide.petCategory}
+              lockPetCategory={Boolean(guide.petCategory)}
+            />
           </div>
         ) : (
           <p className="mt-3 text-slate-600">
@@ -181,6 +208,18 @@ export default async function GuidePage({
               All Stores
             </Link>{" "}
             page for the latest offers.
+          </p>
+        )}
+        {categoryName && guide.petCategory && (
+          <p className="mt-3 text-sm text-slate-500">
+            See every {categoryName.toLowerCase()} offer on the{" "}
+            <Link
+              href={`/categories/${guide.petCategory}`}
+              className="font-semibold text-brand-700 underline"
+            >
+              {categoryName} category page
+            </Link>
+            .
           </p>
         )}
         {storeName && (
