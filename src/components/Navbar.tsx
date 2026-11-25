@@ -17,23 +17,23 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 border-b bg-white/90 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-white/20 bg-gradient-to-r from-brand-600 via-brand-700 to-slate-900 text-white shadow-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
         <Link
           href="/"
           onClick={() => setOpen(false)}
-          className="flex items-center gap-2 text-2xl font-extrabold tracking-tight text-brand-600"
+          className="flex items-center gap-2 text-2xl font-extrabold tracking-tight text-white"
         >
           <Image
             src="/icon.png"
             alt="PawCoupons"
             width={32}
             height={32}
-            className="h-8 w-8 shrink-0"
+            className="h-8 w-8 shrink-0 rounded-lg"
             priority
           />
           <span>
-            Paw<span className="text-slate-900">Coupons</span>
+            Paw<span className="text-brand-100">Coupons</span>
           </span>
         </Link>
 
@@ -46,8 +46,8 @@ export default function Navbar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`rounded-lg px-3 py-2 hover:bg-slate-100 ${
-                item.subtle ? "text-slate-500" : ""
+              className={`rounded-lg px-3 py-2 text-white hover:bg-white/15 ${
+                item.subtle ? "text-white/70" : ""
               }`}
             >
               {item.label}
@@ -61,7 +61,7 @@ export default function Navbar() {
           onClick={() => setOpen((prev) => !prev)}
           aria-expanded={open}
           aria-label="Toggle navigation menu"
-          className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-800 hover:bg-slate-100 md:hidden"
+          className="inline-flex items-center gap-2 rounded-lg border border-white/30 bg-white/10 px-3 py-2 text-sm font-semibold text-white hover:bg-white/20 md:hidden"
         >
           <span>Menu</span>
           <span className="text-xs">{open ? "▲" : "▼"}</span>
@@ -72,7 +72,7 @@ export default function Navbar() {
       {open && (
         <nav
           aria-label="Mobile navigation"
-          className="border-t bg-white px-4 py-3 shadow-md md:hidden"
+          className="border-t border-white/15 bg-slate-900 px-4 py-3 shadow-md md:hidden"
         >
           <div className="mx-auto flex max-w-6xl flex-col gap-1 text-sm font-medium">
             {NAV_LINKS.map((item) => (
@@ -80,8 +80,8 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className={`rounded-lg px-3 py-2.5 hover:bg-slate-100 ${
-                  item.subtle ? "text-slate-500" : "text-slate-800"
+                className={`rounded-lg px-3 py-2.5 text-white hover:bg-white/10 ${
+                  item.subtle ? "text-white/70" : ""
                 }`}
               >
                 {item.label}
