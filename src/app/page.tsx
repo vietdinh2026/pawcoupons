@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import CouponBoard from "@/components/CouponBoard";
 import { getActiveCoupons, getAllStores } from "@/lib/data";
 import { getSortedGuides } from "@/lib/guides";
+import { PET_CATEGORY_DETAILS } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 // Never cache Supabase reads: without this, Next.js caches the fetch
@@ -94,6 +95,12 @@ export default async function Home({
         (couponCountBySlug.get(a.slug) ?? 0)
     )
     .slice(0, 8);
+
+  const couponCountByCategory = new Map<string, number>();
+  for (const c of coupons) {
+    const key = c.pet_category ?? "food-treats";
+    couponCountByCategory.set(key, (couponCountByCategory.get(key) ?? 0) + 1);
+  }
 
   const baseUrl = normalizeBaseUrl(process.env.NEXT_PUBLIC_SITE_URL);
   const checkedDate = formatCurrentCheckedDate();
@@ -205,6 +212,38 @@ export default async function Home({
           </div>
         </section>
       )}
+
+      {/* Shop by category */}
+      <section className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <div className="flex items-baseline justify-between gap-4">
+          <h2 className="text-base font-extrabold tracking-tight text-slate-900">
+            Shop by category
+          </h2>
+          <Link
+            href="/categories"
+            className="text-sm font-bold text-brand-700 transition hover:text-brand-800 hover:underline"
+          >
+            All categories →
+          </Link>
+        </div>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {PET_CATEGORY_DETAILS.map((cat) => {
+            const count = couponCountByCategory.get(cat.value) ?? 0;
+            return (
+              <Link
+                key={cat.value}
+                href={`/categories/${cat.value}`}
+                className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-sm font-semibold text-slate-800 transition hover:border-brand-400 hover:bg-brand-50 hover:text-brand-700"
+              >
+                <span>{cat.label}</span>
+                <span className="rounded-md bg-white px-1.5 py-0.5 text-xs font-bold text-slate-500 ring-1 ring-slate-200">
+                  {count}
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
 
       {/* Coupons */}
       <div id="coupons" className="scroll-mt-6">
