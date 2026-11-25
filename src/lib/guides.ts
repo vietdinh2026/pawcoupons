@@ -24,10 +24,10 @@ export const GUIDES: Guide[] = [
     title: "Black Friday Pet Shopping Tips 2026: Don't Pay Full Price — Check for a Promo Code First",
     description:
       "Black Friday 2026 tips for pet supplies: check for a promo code before you pay, stack sale prices with codes and Autoship, watch prescription exclusions, and mind free-shipping thresholds on heavy litter and food — with live codes for Chewy, Petco, PetSmart, BarkBox and more.",
-    updatedAt: "2026-11-24",
+    updatedAt: "2026-11-25",
     intro: [
-      "Black Friday 2026 falls on Friday, November 27, with Cyber Monday on Monday, November 30. The biggest mistake pet owners make is not a bad deal — it is a good deal paid for at full price because the promo code was never applied.",
-      "Before you pay for anything, check the live codes on the store's PawCoupons page, copy the best code, and paste it in the promo-code box before you pay. It takes 30 seconds, and it is the easiest saving of the whole weekend.",
+      "Your dog doesn't care about Black Friday — but your wallet will notice it when the kibble bag, the flea treatment and the litter all run out in the same week. Black Friday 2026 lands on November 27, with Cyber Monday on November 30, and pet stores save their deepest food, pharmacy and toy deals for exactly that stretch.",
+      "Think of this guide as the pre-checkout sniff test for pet owners: open your pet store's page on PawCoupons, grab the live code that fits your cart — Autoship food, a pharmacy refill, a first BarkBox — and only then pay. Thirty seconds at the promo box can cover a bag of treats, and the codes on the store page are the ones still live right now.",
     ],
     sections: [
       {
@@ -80,27 +80,27 @@ export const GUIDES: Guide[] = [
       {
         question: "When is Black Friday 2026?",
         answer:
-          "Black Friday 2026 is Friday, November 27, 2026. Most stores start their sales one to two weeks early, and Cyber Monday follows on Monday, November 30, 2026.",
+          "Friday, November 27, 2026 — and the pet deals don't wait for that morning. Chewy, Petco and PetSmart usually open their early Black Friday pet sales a week or two ahead, then Cyber Monday on November 30 brings the online-only codes for toys, beds and first boxes.",
       },
       {
         question: "Do I still need a promo code if the item is already on sale?",
         answer:
-          "Yes — that is exactly when a code saves the most. Sale prices and promo codes usually stack, so the code is an extra discount on top of the sale price. Always check the store's live codes on PawCoupons before you pay.",
+          "Yes, and for pet food it's often where the real saving hides. A bag of kibble already marked down can still take a promo code on top, and that extra cut matters when you're buying the same food every month. Just check the live code on PawCoupons first — some sale items and premium brands are excluded, so pick the code that actually applies to your cart.",
       },
       {
         question: "Can I use more than one promo code on one order?",
         answer:
-          "Usually no. Most stores allow one promo code per order, so compare the live codes on the store page and pick the one that saves the most.",
+          "Almost never — pet stores take one code per checkout, whether it's Chewy, Petco or a pharmacy like PetCareRx. The smarter move is to compare: a 35% first-Autoship code usually beats a small sitewide code on a food order, while a pharmacy code usually beats both on flea and tick medicine. Pick the winner for that cart and save the other code for your next refill.",
       },
       {
         question: "What if the code doesn't work?",
         answer:
-          "Check the minimum spend, expiry date and exclusions first. If it still does not work, try the next live code on the store page — and use 'Report broken code' on the coupon so PawCoupons can check it.",
+          "Start with the three usual suspects for pet carts: the code is for first orders or first Autoship only, your cart is under the minimum spend, or the item is prescription medicine or an excluded premium brand. If none of those fit, try the next live code on the store page — and tap 'Report broken code' so we can check it and pull it if it's dead.",
       },
       {
         question: "Do Black Friday promo codes expire quickly?",
         answer:
-          "Yes. Black Friday codes often end at midnight or when the event ends. PawCoupons hides expired codes automatically, so anything listed on a store page is still within its dates — but use a code as soon as you find a good one.",
+          "They can vanish overnight, especially the ones tied to a single weekend. A code that works on a Tuesday night can be gone by Friday morning, and the deepest toy and first-box offers often end when Cyber Monday does. PawCoupons drops expired codes from the store pages automatically, so what you see there is still in date — but if a code looks good for your pet's next food or medicine refill, use it rather than saving it for later.",
       },
     ],
   },
