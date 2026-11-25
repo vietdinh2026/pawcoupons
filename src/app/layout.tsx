@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         <main className="mx-auto min-h-[70vh] max-w-6xl px-4 py-8">{children}</main>
 
-        <footer className="border-t-4 border-brand-600 bg-slate-900 text-slate-300">
+        <footer className="border-t border-white/20 bg-gradient-to-r from-brand-600 via-brand-700 to-slate-900 text-slate-200">
           <div className="mx-auto max-w-6xl px-4 py-8 text-sm">
             <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-6 gap-y-2">
               <Link href="/about" className="hover:text-white">
@@ -66,15 +66,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 All Stores
               </Link>
             </nav>
-            <p className="mt-4 text-slate-400">
+            <p className="mt-4 text-white/70">
               PawCoupons is a coupon-sharing site. We may earn a commission when you shop
               through links on this site, at no extra cost to you. See our{" "}
-              <Link href="/disclosure" className="text-slate-200 underline hover:text-white">
+              <Link href="/disclosure" className="text-white underline hover:text-brand-100">
                 Affiliate Disclosure
               </Link>
               .
             </p>
-            <p className="mt-2 text-slate-400">© {new Date().getFullYear()} PawCoupons. All rights reserved.</p>
+            <p className="mt-2 text-white/70">© {new Date().getFullYear()} PawCoupons. All rights reserved.</p>
           </div>
         </footer>
       </body>
