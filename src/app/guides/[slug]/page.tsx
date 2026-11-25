@@ -5,7 +5,8 @@ import CouponBoard from "@/components/CouponBoard";
 import StoreFaq from "@/components/StoreFaq";
 import { getActiveCoupons, getCouponsForStore, getStoreBySlug } from "@/lib/data";
 import { faqJsonLd } from "@/lib/faq";
-import { getGuide, type Guide, type GuideSection } from "@/lib/guides";
+import { getGuide, GUIDES, type Guide, type GuideSection } from "@/lib/guides";
+import { getPetCategoryDetail } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -72,6 +73,13 @@ export default async function GuidePage({
   const foundGuide = getGuide(params.slug);
   if (!foundGuide) notFound();
   const guide: Guide = foundGuide;
+
+  const relatedGuides = (guide.relatedGuides ?? [])
+    .map((slug) => GUIDES.find((g) => g.slug === slug))
+    .filter((g): g is Guide => Boolean(g));
+  const relatedCategories = (guide.relatedCategories ?? [])
+    .map((slug) => getPetCategoryDetail(slug))
+    .filter((c): c is NonNullable<typeof c> => Boolean(c));
 
   const base = normalizeBaseUrl(process.env.NEXT_PUBLIC_SITE_URL);
   const articleUrl = `${base}/guides/${guide.slug}`;
@@ -213,6 +221,40 @@ export default async function GuidePage({
           items={guide.faqs}
         />
       </div>
+
+      {(relatedGuides.length > 0 || relatedCategories.length > 0) && (
+        <section className="mt-10 max-w-3xl">
+          <h2 className="text-2xl font-extrabold">Related guides & categories</h2>
+          {relatedGuides.length > 0 && (
+            <ul className="mt-4 space-y-3">
+              {relatedGuides.map((g) => (
+                <li key={g.slug}>
+                  <Link
+                    href={`/guides/${g.slug}`}
+                    className="font-semibold text-brand-700 underline hover:text-brand-600"
+                  >
+                    {g.title}
+                  </Link>
+                  <p className="mt-1 text-sm text-slate-600">{g.description}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+          {relatedCategories.length > 0 && (
+            <div className="mt-5 flex flex-wrap gap-2">
+              {relatedCategories.map((c) => (
+                <Link
+                  key={c.value}
+                  href={`/categories/${c.value}`}
+                  className="rounded-full border border-brand-200 bg-brand-50 px-3 py-1.5 text-sm font-semibold text-brand-700 hover:border-brand-300"
+                >
+                  {c.label} coupons →
+                </Link>
+              ))}
+            </div>
+          )}
+        </section>
+      )}
 
       <p className="mt-10 max-w-3xl border-t pt-4 text-sm text-slate-500">
         More guides:{" "}
