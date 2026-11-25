@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import LatestGuidesSection from "@/components/LatestGuidesSection";
 import { getActiveCoupons } from "@/lib/data";
@@ -93,21 +94,30 @@ export default async function CategoriesPage() {
             <Link
               key={cat.value}
               href={`/categories/${cat.value}`}
-              className="rounded-2xl border bg-white p-5 transition hover:shadow-md"
+              className="overflow-hidden rounded-2xl border bg-white transition hover:shadow-md"
             >
-              <h2 className="text-lg font-bold">{cat.label}</h2>
-              <p className="mt-2 line-clamp-3 text-sm text-slate-600">
-                {cat.description}
-              </p>
-              <p className="mt-3 text-sm font-semibold text-brand-700">
-                {count} active coupon{count === 1 ? "" : "s"}
-                {best > 0 ? ` · Up to ${best}% off` : ""}
-              </p>
-              {stores.length > 0 && (
-                <p className="mt-1 text-xs text-slate-400">
-                  {stores.join(" · ")}
+              <Image
+                src={cat.image}
+                alt={cat.label}
+                width={600}
+                height={400}
+                className="h-40 w-full object-cover"
+              />
+              <div className="p-5">
+                <h2 className="text-lg font-bold">{cat.label}</h2>
+                <p className="mt-2 line-clamp-3 text-sm text-slate-600">
+                  {cat.description}
                 </p>
-              )}
+                <p className="mt-3 text-sm font-semibold text-brand-700">
+                  {count} active coupon{count === 1 ? "" : "s"}
+                  {best > 0 ? ` · Up to ${best}% off` : ""}
+                </p>
+                {stores.length > 0 && (
+                  <p className="mt-1 text-xs text-slate-400">
+                    {stores.join(" · ")}
+                  </p>
+                )}
+              </div>
             </Link>
           );
         })}
