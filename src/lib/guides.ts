@@ -13,6 +13,10 @@ export interface Guide {
   updatedAt: string;
   /** Store this guide is about (its live coupons are shown on the page). */
   storeSlug?: string;
+  /** Slugs of other guides this one genuinely relates to (by content, not by default). */
+  relatedGuides?: string[];
+  /** Pet category slugs this guide genuinely covers. */
+  relatedCategories?: string[];
   intro: string[];
   sections: GuideSection[];
   faqs: FaqItem[];
@@ -25,6 +29,12 @@ export const GUIDES: Guide[] = [
     description:
       "Black Friday 2026 tips for pet supplies: check for a promo code before you pay, stack sale prices with codes and Autoship, watch prescription exclusions, and mind free-shipping thresholds on heavy litter and food — with live codes for Chewy, Petco, PetSmart, BarkBox and more.",
     updatedAt: "2026-11-25",
+    relatedGuides: [
+      "how-to-save-at-chewy",
+      "how-to-save-at-petco",
+      "how-to-save-on-pet-pharmacy",
+    ],
+    relatedCategories: ["food-treats", "pharmacy", "litter-cleaning"],
     intro: [
       "Your dog doesn't care about Black Friday — but your wallet will notice it when the kibble bag, the flea treatment and the litter all run out in the same week. Black Friday 2026 lands on November 27, with Cyber Monday on November 30, and pet stores save their deepest food, pharmacy and toy deals for exactly that stretch.",
       "Think of this guide as the pre-checkout sniff test for pet owners: open your pet store's page on PawCoupons, grab the live code that fits your cart — Autoship food, a pharmacy refill, a first BarkBox — and only then pay. Thirty seconds at the promo box can cover a bag of treats, and the codes on the store page are the ones still live right now.",
@@ -111,6 +121,12 @@ export const GUIDES: Guide[] = [
       "Save at Chewy by running one Autoship cart for a multi-pet household: time food, litter and pharmacy refills together, pick between the first-order gift card and the first-Autoship discount, and trial new food risk-free — with live Chewy codes on PawCoupons.",
     updatedAt: "2026-11-25",
     storeSlug: "chewy",
+    relatedGuides: [
+      "how-to-save-on-pet-pharmacy",
+      "how-to-save-at-petco",
+      "black-friday-shopping-tips-2026",
+    ],
+    relatedCategories: ["food-treats", "pharmacy", "litter-cleaning"],
     intro: [
       "If you share your home with a dog who eats like a teenager and a cat who only eats one flavour, Chewy stops being a shop and becomes a schedule. The saving isn't in one clever code — it's in getting the food, the litter and the flea treatment to arrive in the same box, on the week you actually run out.",
       "This guide is built around that one-cart idea. Set up Autoship around each pet's real usage, choose the right first-order deal for the size of your cart, and use Chewy's long returns window to trial a new food without betting a full bag on it. The live Chewy codes on PawCoupons are the starting point — check them before you order, because the best deal changes with your cart.",
@@ -182,6 +198,8 @@ export const GUIDES: Guide[] = [
       "How to save at Petco in 2026: the first Autoship discount, the free Treats rewards program, Vital Care membership perks, and the current live codes.",
     updatedAt: "2026-11-24",
     storeSlug: "petco",
+    relatedGuides: ["black-friday-shopping-tips-2026"],
+    relatedCategories: ["food-treats", "litter-cleaning"],
     intro: [
       "Petco's savings come in three layers: a deep discount on your first Autoship order, the free Treats rewards program that earns points on everything you buy, and the Vital Care membership for regular shoppers who want free shipping and grooming and vet savings.",
       "The live code list at the bottom of this page always shows the best Petco offer on PawCoupons right now — check it before you order, because a first-order code and the Autoship discount do not always stack.",
@@ -250,6 +268,11 @@ export const GUIDES: Guide[] = [
     description:
       "How to save on pet medication in 2026: compare Chewy Pharmacy, PetCareRx and 1-800-PetMeds, watch Rx exclusions in sitewide codes, use Autoship for chronic meds, and check membership pricing before you buy.",
     updatedAt: "2026-11-24",
+    relatedGuides: [
+      "how-to-save-at-chewy",
+      "black-friday-shopping-tips-2026",
+    ],
+    relatedCategories: ["pharmacy"],
     intro: [
       "Flea, tick and heartworm medication is the most expensive repeat purchase most pet owners make — and the one where a promo code most often fails, because sitewide codes usually exclude prescription items.",
       "The trick is to compare the pharmacy-specific offers across Chewy Pharmacy, PetCareRx and 1-800-PetMeds before you buy, and to check the code's exclusions first. A 25% pharmacy code beats a 30% sitewide code that excludes your medication.",
