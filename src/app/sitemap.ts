@@ -49,13 +49,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     {
       url: `${base}/guides`,
-      lastModified: fallbackDate,
+      lastModified: new Date(
+        Math.max(...GUIDES.map((g) => new Date(g.updatedAt).getTime()))
+      ),
       changeFrequency: "weekly",
       priority: 0.8,
     },
     ...GUIDES.map((guide) => ({
       url: `${base}/guides/${guide.slug}`,
-      lastModified: fallbackDate,
+      lastModified: new Date(guide.updatedAt),
       changeFrequency: "weekly" as const,
       priority: 0.7,
     })),
