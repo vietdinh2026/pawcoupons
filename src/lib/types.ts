@@ -100,11 +100,13 @@ export interface PetCategoryDetail {
   label: string;
   description: string;
   tip: string;
+  image: string;
 }
 
 export const PET_CATEGORY_DETAILS: PetCategoryDetail[] = [
   {
     value: "food-treats",
+    image: "/categories/food-treats.webp",
     label: "Food & Treats",
     description:
       "Dry and wet food, treats, supplements and milk powder — the repeat buys every pet needs, month after month.",
@@ -112,6 +114,7 @@ export const PET_CATEGORY_DETAILS: PetCategoryDetail[] = [
   },
   {
     value: "pharmacy",
+    image: "/categories/pharmacy.webp",
     label: "Pharmacy",
     description:
       "Flea, tick and heartworm medication, vitamins, dental care and ear and eye care for dogs and cats.",
@@ -119,6 +122,7 @@ export const PET_CATEGORY_DETAILS: PetCategoryDetail[] = [
   },
   {
     value: "toys-gear",
+    image: "/categories/toys-gear.webp",
     label: "Toys & Gear",
     description:
       "Toys, beds, crates, carriers, leashes and clothes — the fun stuff, usually with a direct percentage-off code.",
@@ -126,6 +130,7 @@ export const PET_CATEGORY_DETAILS: PetCategoryDetail[] = [
   },
   {
     value: "litter-cleaning",
+    image: "/categories/litter-cleaning.webp",
     label: "Litter & Cleaning",
     description:
       "Litter, trays, pads, deodorizers and cage cleaning — heavy and bulky, so delivery costs matter as much as the discount.",
@@ -133,6 +138,7 @@ export const PET_CATEGORY_DETAILS: PetCategoryDetail[] = [
   },
   {
     value: "services-boxes",
+    image: "/categories/services-boxes.webp",
     label: "Services & Boxes",
     description:
       "Monthly subscription boxes, pet insurance, grooming and spa — mostly first-box, free-trial and new-member offers.",
