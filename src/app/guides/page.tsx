@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { GUIDES } from "@/lib/guides";
 
@@ -65,17 +66,28 @@ export default function GuidesPage() {
           <Link
             key={g.slug}
             href={`/guides/${g.slug}`}
-            className="rounded-2xl border bg-white p-5 hover:border-brand-300"
+            className="overflow-hidden rounded-2xl border bg-white transition hover:border-brand-300 hover:shadow-md"
           >
-            <h2 className="font-bold leading-snug text-slate-900">
-              {g.title}
-            </h2>
-            <p className="mt-2 text-sm leading-relaxed text-slate-600">
-              {g.description}
-            </p>
-            <span className="mt-3 inline-block text-sm font-semibold text-brand-700">
-              Read the guide →
-            </span>
+            {g.image && (
+              <Image
+                src={g.image}
+                alt={g.title}
+                width={600}
+                height={300}
+                className="h-40 w-full object-cover"
+              />
+            )}
+            <div className="p-5">
+              <h2 className="font-bold leading-snug text-slate-900">
+                {g.title}
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                {g.description}
+              </p>
+              <span className="mt-3 inline-block text-sm font-semibold text-brand-700">
+                Read the guide →
+              </span>
+            </div>
           </Link>
         ))}
       </div>
