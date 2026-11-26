@@ -11,6 +11,30 @@ function normalizeBaseUrl(rawUrl?: string): string {
   return value.replace(/\/+$/, "");
 }
 
+/** A date is only usable in the sitemap when it parses to a real time. */
+function validDate(raw: string | Date | null | undefined, fallback: Date): Date {
+  if (!raw) return fallback;
+  const parsed = new Date(raw);
+  return Number.isNaN(parsed.getTime()) ? fallback : parsed;
+}
+
+/**
+ * Newest valid guide date, or the fallback when there are no guides
+ * (e.g. the content/ folder has not been uploaded yet). Without this
+ * guard, Math.max() over an empty list is -Infinity and
+ * new Date(-Infinity) is an Invalid Date — which crashes the whole
+ * build while prerendering /sitemap.xml ("RangeError: Invalid time value").
+ */
+function newestGuideDate(
+  guides: { updatedAt: string }[],
+  fallback: Date
+): Date {
+  const times = guides
+    .map((g) => new Date(g.updatedAt).getTime())
+    .filter((t) => !Number.isNaN(t));
+  return times.length ? new Date(Math.max(...times)) : fallback;
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = normalizeBaseUrl(process.env.NEXT_PUBLIC_SITE_URL);
   const stores = await getAllStores();
@@ -49,15 +73,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
     {
       url: `${base}/guides`,
-      lastModified: new Date(
-        Math.max(...GUIDES.map((g) => new Date(g.updatedAt).getTime()))
-      ),
+      lastModified: newestGuideDate(GUIDES, fallbackDate),
       changeFrequency: "weekly",
       priority: 0.8,
     },
     ...GUIDES.map((guide) => ({
       url: `${base}/guides/${guide.slug}`,
-      lastModified: new Date(guide.updatedAt),
+      lastModified: validDate(guide.updatedAt, fallbackDate),
       changeFrequency: "weekly" as const,
       priority: 0.7,
     })),
