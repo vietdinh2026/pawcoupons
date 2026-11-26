@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown, { type Components } from "react-markdown";
@@ -199,17 +198,6 @@ export default async function GuidePage({
         </time>{" "}
         · PawCoupons
       </p>
-
-      {guide.image && (
-        <Image
-          src={guide.image}
-          alt={guide.title}
-          width={1200}
-          height={600}
-          className="mt-6 w-full rounded-3xl border object-cover"
-          priority
-        />
-      )}
 
       <div className="mt-6 max-w-3xl">
         <Markdown>{guide.intro}</Markdown>
