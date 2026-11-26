@@ -23,7 +23,7 @@ If you are stocking up on life-stage recipes or recurring deliveries, browse the
 
 ## 1. Puppies & Kittens (0 – 12 Months)
 
-![Pomeranian puppy eating from a bowl](/guides/images/food-age-puppy-kitten.webp)
+![Golden retriever puppy and tabby kitten eating from separate ceramic bowls](/guides/images/puppies-kittens-0-12-months.webp)
 
 Young pets burn calories quickly and need dense nutrition to build muscle, bones, vision, and brain function.
 
@@ -32,7 +32,7 @@ Young pets burn calories quickly and need dense nutrition to build muscle, bones
 
 ## 2. Adult Dogs & Cats (1 – 7 Years)
 
-![Adult Dalmatian dog eating from a metal bowl](/guides/images/food-age-adult.webp)
+![Adult dog and adult cat sitting beside bowls of dry kibble and wet pate](/guides/images/adult-dogs-cats-1-7-years.webp)
 
 Once growth slows down, the goal shifts from rapid building to maintaining lean muscle mass, steady energy, and an ideal body weight.
 
@@ -43,7 +43,7 @@ Once growth slows down, the goal shifts from rapid building to maintaining lean 
 
 ## 3. Senior Dogs & Cats (7+ Years)
 
-![Dog eating from a white bowl at home](/guides/images/food-age-senior.webp)
+![Senior dog and elderly cat resting calmly near soft wet food bowls](/guides/images/senior-dogs-and-cats-7-years-plus.webp)
 
 Older pets typically have slower metabolisms, sensitive teeth or digestion, and higher susceptibility to joint stiffness or kidney strain.
 
