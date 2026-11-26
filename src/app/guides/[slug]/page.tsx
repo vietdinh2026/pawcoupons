@@ -2,12 +2,55 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ReactMarkdown, { type Components } from "react-markdown";
+import remarkGfm from "remark-gfm";
 import CouponBoard from "@/components/CouponBoard";
 import StoreFaq from "@/components/StoreFaq";
 import { getActiveCoupons, getCouponsForPetCategory, getCouponsForStore, getStoreBySlug } from "@/lib/data";
 import { faqJsonLd } from "@/lib/faq";
-import { getGuide, GUIDES, type Guide, type GuideSection } from "@/lib/guides";
+import { getGuide, GUIDES, type Guide } from "@/lib/guides";
 import { getPetCategoryDetail } from "@/lib/types";
+
+/** Markdown rendering for guide bodies, styled to match the site. */
+const markdownComponents: Components = {
+  h2: ({ node, ...props }) => (
+    <h2 className="mt-10 text-2xl font-extrabold first:mt-0" {...props} />
+  ),
+  p: ({ node, ...props }) => (
+    <p className="mt-4 leading-relaxed text-slate-700" {...props} />
+  ),
+  ul: ({ node, ...props }) => (
+    <ul className="mt-3 list-disc space-y-2 pl-6 leading-relaxed text-slate-700" {...props} />
+  ),
+  ol: ({ node, ...props }) => (
+    <ol className="mt-3 list-decimal space-y-2 pl-6 leading-relaxed text-slate-700" {...props} />
+  ),
+  a: ({ node, href, ...props }) =>
+    href?.startsWith("/") ? (
+      <Link href={href} className="font-semibold text-brand-700 underline" {...props} />
+    ) : (
+      <a href={href} className="font-semibold text-brand-700 underline" {...props} />
+    ),
+  table: ({ node, ...props }) => (
+    <div className="mt-4 overflow-x-auto rounded-xl border">
+      <table className="w-full border-collapse text-sm" {...props} />
+    </div>
+  ),
+  th: ({ node, ...props }) => (
+    <th className="border-b bg-slate-50 px-3 py-2 text-left font-bold text-slate-900" {...props} />
+  ),
+  td: ({ node, ...props }) => (
+    <td className="border-b px-3 py-2 align-top leading-relaxed text-slate-700" {...props} />
+  ),
+};
+
+function Markdown({ children }: { children: string }) {
+  return (
+    <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+      {children}
+    </ReactMarkdown>
+  );
+}
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -163,7 +206,15 @@ export default async function GuidePage({
         {guide.title}
       </h1>
       <p className="mt-2 text-sm text-slate-500">
-        Last updated: <time dateTime={guide.updatedAt}>November 2026</time> · PawCoupons
+        Last updated:{" "}
+        <time dateTime={guide.updatedAt}>
+          {new Date(`${guide.updatedAt}T00:00:00`).toLocaleDateString("en-US", {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+          })}
+        </time>{" "}
+        · PawCoupons
       </p>
 
       {guide.image && (
@@ -177,10 +228,8 @@ export default async function GuidePage({
         />
       )}
 
-      <div className="mt-6 max-w-3xl space-y-4 leading-relaxed text-slate-700">
-        {guide.intro.map((p: string, idx: number) => (
-          <p key={`intro-${idx}`}>{p}</p>
-        ))}
+      <div className="mt-6 max-w-3xl">
+        <Markdown>{guide.intro}</Markdown>
       </div>
 
       {/* Live codes — always current, from the database */}
@@ -236,23 +285,11 @@ export default async function GuidePage({
         )}
       </section>
 
-      {guide.sections.map((s: GuideSection) => (
-        <section key={s.heading} className="mt-10 max-w-3xl">
-          <h2 className="text-2xl font-extrabold">{s.heading}</h2>
-          <div className="mt-3 space-y-4 leading-relaxed text-slate-700">
-            {s.paragraphs.map((p: string, idx: number) => (
-              <p key={`${s.heading}-p-${idx}`}>{p}</p>
-            ))}
-          </div>
-          {s.bullets && (
-            <ul className="mt-3 list-disc space-y-2 pl-6 leading-relaxed text-slate-700">
-              {s.bullets.map((b: string, idx: number) => (
-                <li key={`${s.heading}-b-${idx}`}>{b}</li>
-              ))}
-            </ul>
-          )}
-        </section>
-      ))}
+      {guide.body && (
+        <div className="mt-10 max-w-3xl">
+          <Markdown>{guide.body}</Markdown>
+        </div>
+      )}
 
       <div className="max-w-3xl">
         <StoreFaq
