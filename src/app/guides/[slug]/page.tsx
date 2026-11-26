@@ -42,6 +42,12 @@ const markdownComponents: Components = {
   td: ({ node, ...props }) => (
     <td className="border-b px-3 py-2 align-top leading-relaxed text-slate-700" {...props} />
   ),
+  img: ({ node, ...props }) => (
+    // Plain <img> (not next/image): inline guide images have unknown
+    // dimensions, and the path is already a local /guides/... file.
+    // eslint-disable-next-line @next/next/no-img-element
+    <img className="mt-6 w-full rounded-3xl border object-cover" {...props} />
+  ),
 };
 
 function Markdown({ children }: { children: string }) {
