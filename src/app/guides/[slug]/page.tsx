@@ -4,9 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
-import CouponBoard from "@/components/CouponBoard";
 import StoreFaq from "@/components/StoreFaq";
-import { getActiveCoupons, getCouponsForPetCategory, getCouponsForStore, getStoreBySlug } from "@/lib/data";
 import { faqJsonLd } from "@/lib/faq";
 import { getGuide, GUIDES, type Guide } from "@/lib/guides";
 import { getPetCategoryDetail } from "@/lib/types";
@@ -58,8 +56,14 @@ function Markdown({ children }: { children: string }) {
   );
 }
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
+/**
+ * Guide pages are pure content (SEO): no live coupons on the page.
+ * With no per-request data, the pages can be prerendered at build
+ * time from the Markdown files instead of rendering on every visit.
+ */
+export async function generateStaticParams() {
+  return GUIDES.map((guide) => ({ slug: guide.slug }));
+}
 
 function normalizeBaseUrl(rawUrl?: string): string {
   const fallback = "https://pawcoupons.com";
@@ -134,33 +138,6 @@ export default async function GuidePage({
 
   const base = normalizeBaseUrl(process.env.NEXT_PUBLIC_SITE_URL);
   const articleUrl = `${base}/guides/${guide.slug}`;
-
-  let liveCoupons: Awaited<ReturnType<typeof getActiveCoupons>>["coupons"] = [];
-  let liveVotes: Awaited<ReturnType<typeof getActiveCoupons>>["votes"] = {};
-  let storeName: string | null = null;
-  let categoryName: string | null = null;
-
-  if (guide.storeSlug) {
-    const store = await getStoreBySlug(guide.storeSlug);
-    if (store) {
-      storeName = store.name;
-      const res = await getCouponsForStore(store.id);
-      liveCoupons = res.coupons;
-      liveVotes = res.votes;
-    }
-  } else if (guide.petCategory) {
-    const detail = getPetCategoryDetail(guide.petCategory);
-    categoryName = detail?.label ?? null;
-    const res = await getCouponsForPetCategory(guide.petCategory);
-    liveCoupons = res.coupons;
-    liveVotes = res.votes;
-  } else {
-    const { coupons, votes } = await getActiveCoupons();
-    liveVotes = votes;
-    liveCoupons = [...coupons]
-      .sort((a, b) => (b.discount_value ?? 0) - (a.discount_value ?? 0))
-      .slice(0, 8);
-  }
 
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -237,59 +214,6 @@ export default async function GuidePage({
       <div className="mt-6 max-w-3xl">
         <Markdown>{guide.intro}</Markdown>
       </div>
-
-      {/* Live codes — always current, from the database */}
-      <section className="mt-10">
-        <h2 className="text-2xl font-extrabold">
-          {storeName
-            ? `Current ${storeName} codes`
-            : categoryName
-              ? `Related ${categoryName} coupons`
-              : "Biggest live Black Friday offers"}
-        </h2>
-        {liveCoupons.length > 0 ? (
-          <div className="mt-4">
-            <CouponBoard
-              coupons={liveCoupons}
-              votes={liveVotes}
-              initialPetCategory={guide.petCategory}
-              lockPetCategory={Boolean(guide.petCategory)}
-            />
-          </div>
-        ) : (
-          <p className="mt-3 text-slate-600">
-            No live codes right now — check the{" "}
-            <Link href="/stores" className="font-semibold text-brand-700 underline">
-              All Stores
-            </Link>{" "}
-            page for the latest offers.
-          </p>
-        )}
-        {categoryName && guide.petCategory && (
-          <p className="mt-3 text-sm text-slate-500">
-            See every {categoryName.toLowerCase()} offer on the{" "}
-            <Link
-              href={`/categories/${guide.petCategory}`}
-              className="font-semibold text-brand-700 underline"
-            >
-              {categoryName} category page
-            </Link>
-            .
-          </p>
-        )}
-        {storeName && (
-          <p className="mt-3 text-sm text-slate-500">
-            See every {storeName} offer on the{" "}
-            <Link
-              href={`/stores/${guide.storeSlug}`}
-              className="font-semibold text-brand-700 underline"
-            >
-              {storeName} promo code page
-            </Link>
-            .
-          </p>
-        )}
-      </section>
 
       {guide.body && (
         <div className="mt-10 max-w-3xl">
