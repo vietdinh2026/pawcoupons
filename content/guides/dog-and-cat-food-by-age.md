@@ -32,7 +32,7 @@ Young pets burn calories quickly and need dense nutrition to build muscle, bones
 
 ## 2. Adult Dogs & Cats (1 – 7 Years)
 
-![Adult dog and adult cat sitting beside bowls of dry kibble and wet pate](/guides/images/adult-dogs-cats-1-7-years.webp)
+![Adult golden retriever and tabby cat by their food bowls](/guides/images/adult-dogs-cats-1-7-years.webp)
 
 Once growth slows down, the goal shifts from rapid building to maintaining lean muscle mass, steady energy, and an ideal body weight.
 
@@ -43,7 +43,7 @@ Once growth slows down, the goal shifts from rapid building to maintaining lean 
 
 ## 3. Senior Dogs & Cats (7+ Years)
 
-![Senior dog and elderly cat resting calmly near soft wet food bowls](/guides/images/senior-dogs-and-cats-7-years-plus.webp)
+![Senior golden retriever and tabby cat resting by their food bowls](/guides/images/senior-dogs-and-cats-7-years-plus.webp)
 
 Older pets typically have slower metabolisms, sensitive teeth or digestion, and higher susceptibility to joint stiffness or kidney strain.
 
