@@ -1,9 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import CouponCard from "./CouponCard";
 import type { Coupon, VoteCounts } from "@/lib/types";
 import { PET_CATEGORIES } from "@/lib/types";
+
+// How many coupons to show before the "Load more" button appears.
+// The homepage loads every active coupon at once, so with 100+ coupons
+// the page would be endless without this cap.
+const PAGE_SIZE = 24;
 
 type SortKey = "newest" | "expiry" | "discount";
 
@@ -24,6 +29,7 @@ export default function CouponBoard({
   const [petCategory, setPetCategory] = useState(initialPetCategory ?? "all");
   const [store, setStore] = useState(initialStore ?? "All");
   const [sort, setSort] = useState<SortKey>("newest");
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
   const stores = useMemo(
     () =>
@@ -57,6 +63,14 @@ export default function CouponBoard({
     }
     return list;
   }, [coupons, query, petCategory, store, sort]);
+
+  // Any filter/sort/search change starts over from the first page.
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [query, petCategory, store, sort]);
+
+  const visible = filtered.slice(0, visibleCount);
+  const remaining = filtered.length - visible.length;
 
   return (
     <div>
@@ -111,8 +125,13 @@ export default function CouponBoard({
       )}
 
       <p className="mt-5 text-sm text-slate-500">
-        {filtered.length} coupon{filtered.length === 1 ? "" : "s"}
-        {query || petCategory !== "all" || store !== "All" ? " matching your filters" : " available"}
+        {remaining > 0
+          ? `Showing ${visible.length} of ${filtered.length} coupons`
+          : `${filtered.length} coupon${filtered.length === 1 ? "" : "s"}`}
+        {remaining <= 0 &&
+          (query || petCategory !== "all" || store !== "All"
+            ? " matching your filters"
+            : " available")}
       </p>
 
       {filtered.length === 0 ? (
@@ -123,11 +142,23 @@ export default function CouponBoard({
           </p>
         </div>
       ) : (
-        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((c) => (
-            <CouponCard key={c.id} coupon={c} votes={votes[c.id] ?? { up: 0, down: 0 }} />
-          ))}
-        </div>
+        <>
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {visible.map((c) => (
+              <CouponCard key={c.id} coupon={c} votes={votes[c.id] ?? { up: 0, down: 0 }} />
+            ))}
+          </div>
+          {remaining > 0 && (
+            <div className="mt-6 text-center">
+              <button
+                onClick={() => setVisibleCount((n) => n + PAGE_SIZE)}
+                className="rounded-xl bg-brand-600 px-6 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-brand-700"
+              >
+                Load more coupons ({remaining} more)
+              </button>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
