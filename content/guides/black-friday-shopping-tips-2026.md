@@ -1,7 +1,7 @@
 ---
 title: "Black Friday Pet Shopping Tips 2026: Don't Pay Full Price — Check for a Promo Code First"
 description: "Black Friday 2026 tips for pet supplies: check for a promo code before you pay, stack sale prices with codes and Autoship, watch prescription exclusions, and mind free-shipping thresholds on heavy litter and food — with live codes for Chewy, Petco, PetSmart, BarkBox and more."
-updatedAt: "2026-11-25"
+updatedAt: "2026-11-26"
 relatedGuides: ["how-to-save-at-chewy","how-to-save-at-petco","how-to-save-on-pet-pharmacy"]
 relatedCategories: ["food-treats","pharmacy","litter-cleaning"]
 faqs:
@@ -64,4 +64,4 @@ Early Black Friday sales start one to two weeks before Friday, November 27, and 
 | Litter and cleaning | Chewy, Petco | Check free-shipping thresholds first |
 
 
-Every store above has a live code page on PawCoupons — open the store page from the guide's live offers or the All Stores page and check the codes there before you check out.
+Every store above has a live code page on PawCoupons — open it from the All Stores page and check the codes there before you check out.

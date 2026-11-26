@@ -19,7 +19,7 @@ faqs:
 
 A puppy and a ten-year-old dog may live in the same house, but they should not eat the same food. Puppies and kittens are building bone, muscle and brain tissue, so they need more calories and protein per bite than an adult. Seniors, on the other hand, move less, digest more slowly and often carry a health problem or two — their food needs to work harder on joints, kidneys and teeth, not just fill the bowl.
 
-This guide walks through each life stage for dogs and cats, what to look for on the bag, and how to change foods without a week of upset stomachs. The live food coupons at the bottom of the page are the current offers for the foods mentioned here — check them before you order, because the best deal changes with your cart.
+This guide walks through each life stage for dogs and cats, what to look for on the bag, and how to change foods without a week of upset stomachs. When you are ready to buy, check the live food coupons on PawCoupons first — the best deal changes with your cart.
 
 ## Puppies and kittens: food for growing, not just eating
 

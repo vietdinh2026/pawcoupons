@@ -19,7 +19,7 @@ faqs:
 
 Pets get sick on a calendar. Spring brings pollen and itchy skin, summer brings fleas, ticks and heat, autumn brings a second wave of parasites as animals come indoors, and winter brings stiff joints and dry, cracked skin. Knowing what is normal for the season — and what is a warning sign — saves you a panicked midnight search and a vet bill that could have been smaller a week earlier.
 
-This guide covers the most common seasonal problems for dogs and cats, what you can do at home, and when to call the vet instead. The live pharmacy coupons at the bottom are the current offers for the flea, tick and allergy products mentioned here.
+This guide covers the most common seasonal problems for dogs and cats, what you can do at home, and when to call the vet instead. For the flea, tick and allergy products mentioned here, check the live pharmacy coupons on PawCoupons before you buy — the cheapest store changes with each sale.
 
 ## Spring: allergies, itchy skin and shedding
 

@@ -3,18 +3,17 @@
   This file is NOT published (files starting with "_" are skipped).
   Frontmatter rules:
   - title / description / updatedAt are required.
-  - storeSlug: the store this guide is about (its live coupons show on the page).
+  - storeSlug: the store this guide is about.
     OR petCategory: the category (food-treats, pharmacy, toys-gear,
-    litter-cleaning, services-boxes) whose live coupons show instead.
-    A guide has at most one of the two; a guide with neither shows the
-    biggest live offers.
+    litter-cleaning, services-boxes) this guide is about.
+    A guide has at most one of the two.
   - image: path to the hero image, e.g. "/guides/my-guide.webp".
   - relatedGuides / relatedCategories: only guides/categories this one
     genuinely relates to — leave them out if there is none.
   - faqs: question/answer pairs, shown in the FAQ box at the bottom.
   Body rules:
-  - Paragraphs before the first "##" heading are the intro (shown above
-    the live coupons). Everything after is shown below them.
+  - Paragraphs before the first "##" heading are the intro.
+    Everything after is the body.
   - Use "##" for section headings, "-" for bullet lists, and tables like:
       | Column A | Column B |
       | --- | --- |

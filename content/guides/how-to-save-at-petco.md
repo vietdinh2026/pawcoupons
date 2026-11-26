@@ -1,7 +1,7 @@
 ---
 title: "How to Save at Petco: Autoship, Treats Rewards & First-Order Codes (2026)"
 description: "How to save at Petco in 2026: the first Autoship discount, the free Treats rewards program, Vital Care membership perks, and the current live codes."
-updatedAt: "2026-11-24"
+updatedAt: "2026-11-26"
 storeSlug: "petco"
 relatedGuides: ["black-friday-shopping-tips-2026"]
 relatedCategories: ["food-treats","litter-cleaning"]
@@ -18,7 +18,7 @@ faqs:
 
 Petco's savings come in three layers: a deep discount on your first Autoship order, the free Treats rewards program that earns points on everything you buy, and the Vital Care membership for regular shoppers who want free shipping and grooming and vet savings.
 
-The live code list at the bottom of this page always shows the best Petco offer on PawCoupons right now — check it before you order, because a first-order code and the Autoship discount do not always stack.
+Before you order, check the live Petco codes on the Petco store page on PawCoupons — a first-order code and the Autoship discount do not always stack, so compare the final price first.
 
 ## First Autoship order: the deepest single discount
 
