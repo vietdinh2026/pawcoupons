@@ -12,7 +12,7 @@ A dog or cat's nutritional needs shift dramatically from rapid early growth to s
 If you are stocking up on life-stage recipes or recurring deliveries, browse the latest [Food & Treats deals on PawCoupons](https://pawcoupons.com/) or explore our [partner pet stores](https://pawcoupons.com/stores) for Autoship and new-customer discounts.
 
 ## 1. Puppies & Kittens (0 – 12 Months)
-
+(/images/guides/puppies-kittens-0-12-months..webp)
 Young pets burn calories quickly and need dense nutrition to build muscle, bones, vision, and brain function.
 
 * **Puppies (0 – 12 months, up to 18–24 months for large breeds):** Require higher protein, healthy fats, balanced calcium and phosphorus, and **DHA** for brain and eye development. Large-breed puppies need specially controlled calcium-to-phosphorus ratios so their bones do not grow too fast and stress developing joints. Feed small, easily chewed kibble (or moistened kibble) split into 3–4 meals daily.
