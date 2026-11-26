@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { GUIDES } from "@/lib/guides";
 
@@ -57,8 +56,7 @@ export default function GuidesPage() {
       <p className="mt-2 max-w-2xl text-slate-600">
         Step-by-step guides to saving at the stores PawCoupons covers — how
         promo codes work, which membership perks are actually worth it, and
-        when to shop for the deepest discounts. Every guide links to the
-        live codes, so you never follow a stale deal.
+        when to shop for the deepest discounts.
       </p>
 
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -66,28 +64,17 @@ export default function GuidesPage() {
           <Link
             key={g.slug}
             href={`/guides/${g.slug}`}
-            className="overflow-hidden rounded-2xl border bg-white transition hover:border-brand-300 hover:shadow-md"
+            className="rounded-2xl border bg-white p-5 hover:border-brand-300"
           >
-            {g.image && (
-              <Image
-                src={g.image}
-                alt={g.title}
-                width={600}
-                height={300}
-                className="h-40 w-full object-cover"
-              />
-            )}
-            <div className="p-5">
-              <h2 className="font-bold leading-snug text-slate-900">
-                {g.title}
-              </h2>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                {g.description}
-              </p>
-              <span className="mt-3 inline-block text-sm font-semibold text-brand-700">
-                Read the guide →
-              </span>
-            </div>
+            <h2 className="font-bold leading-snug text-slate-900">
+              {g.title}
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate-600">
+              {g.description}
+            </p>
+            <span className="mt-3 inline-block text-sm font-semibold text-brand-700">
+              Read the guide →
+            </span>
           </Link>
         ))}
       </div>
